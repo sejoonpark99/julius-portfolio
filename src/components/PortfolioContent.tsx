@@ -1902,38 +1902,44 @@ def close_position(app, position):
         src: '/img/16.avif',
         details: {
           title: "Furniture Design",
-          description: "I do make a bunch of random things at times, started off with a large desk made from an IKEA kitchen top and metal frames from amazon. Tried building lamps, built a shed, whatever might be useful around the house",
+          description: "Originally was interested in interior design but got motivations for furniture design. I do make a bunch of random things at times, started off with a large desk made from an IKEA kitchen top and metal frames from amazon. Tried building lamps, built a shed, whatever might be useful around the house",
           // overview: "",
           // technicalDetails: "",
           // challenges: "",
           // client: "",
           // duration: "",
           // technologies: [],
-          // features: [
-          //   "Italian, Korean, Chinese, anything reverse sear will do",
-          // ]
+          features: [
+            "Inspo 1: https://www.instagram.com/wooj.design/?hl=en",
+            "Inspo 2: https://www.instagram.com/p/DBZLnHfI5zG/?hl=en",
+            "Inspo 3: https://www.instagram.com/p/C9zKUu5Sx3v/?hl=en&img_index=1",
+            "Inspo 4: https://www.instagram.com/mid_century_friends/?hl=en"
+          ]
         }
       },
       { 
         src: '/img/17.avif',
         details: {
           title: "Blockchain",
-          description: "Started interest in my first year of university. Been researching blockchain before layer 2 days, recently was looking at AI agent frameworks such as PIPPIN, swarmnode, ai16z. Currently invested in both stocks and crypto, my current interest is in Sonar Ping",
+          description: "Started interest in my first year of university. Been researching blockchain before layer 2 days, recently was looking at AI agent frameworks such as PIPPIN, swarmnode, ai16z. Currently invested in both stocks and crypto",
           // overview: "",
           // technicalDetails: "",
           // challenges: "",
           // client: "",
           // duration: "",
           // technologies: [],
-          // features: [
-          // ]
+          features: [
+            "Metadata/wealth manager: https://www.sonarplatform.io/",
+            "AI Agents: https://babyagi.org/, https://pippin.love/, https://swarmnode.ai/",
+            "Conferences to attend: https://www.canadacryptoweek.com/, https://www.futuristconference.com/, "
+          ]
         }
       },
       { 
         src: '/img/18.avif',
         details: {
           title: "Its time to Cook",
-          description: "Learning how to cook so that I can stop making tasteless pasta for a week.",
+          description: "Learning how to cook so that I can stop making tasteless pasta for a week. Italian, Korean, Chinese, anything reverse seared will do",
           // overview: "",
           // // technicalDetails: "",
           // challenges: "",
@@ -1941,7 +1947,9 @@ def close_position(app, position):
           // // duration: "",
           // // technologies: [],
           features: [
-            "Italian, Korean, Chinese, anything reverse seared will do",
+            "Nobu black cod: https://www.instagram.com/p/DEWInV-vB_5/?hl=en",
+            "Compound butter: https://www.instagram.com/p/C-8M7Jno5iB/?hl=en",
+            "Yuzu Coffee: https://www.instagram.com/p/DF5fHq9RxWJ/?hl=en",
           ]
         }
       }

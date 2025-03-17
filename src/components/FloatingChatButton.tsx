@@ -11,12 +11,12 @@ type Message = {
 export default function GooeyFloatingChatButton() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentUserMessage, setCurrentUserMessage] = useState('');
-  const [currentBotMessage, setCurrentBotMessage] = useState("Hey! Nice to meet you, just created this draggable chat in case you wanted to ask certain things in detail. I should answer most things, but to train someone's 25 years of personal knowledge takes time! Haha");
+  const [currentBotMessage, setCurrentBotMessage] = useState("Hey! Nice to meet you, just created this draggable chat in case you wanted to ask certain things in detail. I should answer most things, but im still training the context for the chatbot");
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
-  const [buttonPosition, setButtonPosition] = useState({ x: 1200, y: 30 });
+  const [buttonPosition, setButtonPosition] = useState({ x: 1100, y: 20 });
   const [chatPosition, setChatPosition] = useState({ x: 0, y: 0 });
   const [isDraggingButton, setIsDraggingButton] = useState(false);
   const [isDraggingChat, setIsDraggingChat] = useState(false);
