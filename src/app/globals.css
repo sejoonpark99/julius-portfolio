@@ -18,7 +18,7 @@
 	--image-gap: 1vw;
 	--image-gap-large: 2vw;
 	--img-size: 5vw;
-	--img-size-large: 14vw;
+	--img-size-large: 10vw;
 }
 
 body {
@@ -386,7 +386,7 @@ a:focus-visible {
 	justify-content: center;
 	justify-items: center;
 	--img-size: var(--img-size-large);
-	grid-template-columns: repeat(4,var(--img-size));
+	grid-template-columns: repeat(7,var(--img-size));
 	grid-template-rows: repeat(2,var(--img-size));
 }
 
@@ -405,4 +405,943 @@ a:focus-visible {
 		--padding-sides: 4rem;
 		--padding-row: 2rem;
 	}
+}
+
+/* Add to your globals.css file */
+
+/* Container positioning for hover effects */
+.images-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+    position: relative;
+  }
+  
+  .image-wrapper {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+  }
+  
+  /* The main hover card overlay effect */
+  .image-wrapper:hover {
+    transform: scale(1.03);
+    z-index: 10;
+  }
+  
+  .hover-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  
+  .image-wrapper:hover .hover-card {
+    opacity: 1;
+  }
+  
+  .hover-card-content {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.7) 70%, transparent 100%);
+    padding: 16px;
+    color: white;
+    text-align: left;
+  }
+  
+  .hover-card-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .hover-card-description {
+    font-size: 12px;
+    opacity: 0.9;
+    margin-bottom: 8px;
+  }
+  
+  .hover-card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+  
+  .hover-card-tag {
+    background-color: rgba(255, 255, 255, 0.2);
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+  
+  /* Page dimming effect when hovering on an image */
+  .content {
+    position: relative;
+  }
+  
+  .row {
+    position: relative;
+  }
+  
+  .dimming-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+    z-index: 5;
+  }
+  
+  .image-wrapper:hover ~ .dimming-overlay {
+    opacity: 1;
+  }
+
+  /* Overlay styles */
+.portfolio-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .overlay-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(5px);
+  }
+  
+  .overlay-content {
+    position: relative;
+    width: 90%;
+    max-width: 1200px;
+    max-height: 90vh;
+    background-color: #1a1a1a;
+    border-radius: 8px;
+    padding: 40px;
+    color: #fff;
+    overflow-y: auto;
+    z-index: 1001;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  }
+  
+  .overlay-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: #fff;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1002;
+    transition: transform 0.3s ease;
+  }
+  
+  .overlay-close:hover {
+    transform: rotate(90deg);
+  }
+  
+  .overlay-content h2 {
+    font-size: 36px;
+    margin-bottom: 30px;
+    font-weight: 700;
+  }
+  
+  .overlay-images {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .overlay-image {
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 4px;
+  }
+  
+  .overlay-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  
+  .overlay-image:hover img {
+    transform: scale(1.05);
+  }
+  
+  .overlay-details {
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .overlay-details h3 {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 600;
+  }
+  
+  .overlay-details p {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: rgba(255, 255, 255, 0.8);
+  }
+  
+  .overlay-metadata {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 15px;
+    margin: 30px 0;
+  }
+  
+  .metadata-item {
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 4px;
+  }
+  
+  .overlay-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 30px;
+  }
+  
+  .action-button {
+    padding: 12px 24px;
+    background-color: #3a86ff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .action-button:hover {
+    background-color: #2667cc;
+  }
+  
+  /* When overlay is open, prevent body scrolling */
+  body.overlay-open {
+    overflow: hidden;
+  }
+  
+  /* Make row clickable */
+  .row {
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+  }
+  
+  .row:hover {
+    opacity: 0.9;
+  }
+
+  /* Add to your globals.css or component CSS */
+.preview__item-description {
+    margin: 2rem 0;
+    max-width: 800px;
+    padding: 0 1rem;
+  }
+  
+  .preview__item-text {
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+    font-size: 1.1rem;
+    color: #333;
+  }
+  
+  /* If you want to add some styling for text on smaller screens */
+  @media (max-width: 768px) {
+    .preview__item-description {
+      padding: 0 1.5rem;
+    }
+    
+    .preview__item-text {
+      font-size: 1rem;
+    }
+  }
+
+  /* styles/gooey-chat.css */
+
+/* Gooey Filter Effect */
+.gooey-container {
+    filter: url('#gooey');
+  }
+  
+  /* Base animation for blobs */
+  @keyframes blobFloat {
+    0%, 100% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-10px) scale(1.1);
+    }
+  }
+  
+  /* Different animations for each blob */
+  .blob-1 {
+    animation: blobFloat 3s ease-in-out infinite;
+  }
+  
+  .blob-2 {
+    animation: blobFloat 4s ease-in-out infinite 0.5s;
+  }
+  
+  .blob-3 {
+    animation: blobFloat 3.5s ease-in-out infinite 1s;
+  }
+  
+  /* Chat window animations */
+  @keyframes popIn {
+    0% {
+      transform: scale(0.5);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+  
+  .pop-in {
+    animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+  }
+  
+  /* Button hover animation */
+  .chat-button {
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+  
+  .chat-button:hover {
+    transform: scale(1.1);
+  }
+  
+  /* Additional utility classes for gooey effect */
+  .gooey-blob {
+    background-color: black;
+    border-radius: 50%;
+    position: absolute;
+    transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  }
+
+  .flex-1 {
+    /* Add more bottom margin to create space between messages and input */
+    margin-bottom: 12px; 
+    margin-top: 12px;
+  }
+
+  .cell__img-link {
+    display: block;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+    text-decoration: none;
+  }
+  
+  .cell__img-link:hover {
+    transform: translateY(-5px);
+  }
+  
+  /* Make sure links don't affect the grid layout */
+  .grid a {
+    display: contents;
+  }
+  
+  /* Add a subtle indicator that these are clickable */
+  .cell__img-inner::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    border-radius: calc(var(--image-gap) / 3);
+  }
+  
+  .cell__img-link:hover .cell__img-inner::after {
+    opacity: 1;
+  }
+
+/* Updated Image Dialog Styles - Top Positioned */
+/* Dialog backdrop to ensure proper layering */
+/* Fixed Dialog Styles */
+/* Dialog Z-Index Fixes */
+/* Dialog Z-Index Fixes */
+/* Dialog Z-Index Fixes */
+/* Make sure the dialog backdrop centers content properly */
+/* Force GPU acceleration and optimize animations */
+.dialog-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  will-change: opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.dialog-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+  animation: backdropFadeIn 0.3s ease-in-out forwards;
+}
+
+.dialog-backdrop:not(.active) {
+  animation: backdropFadeOut 0.3s ease-in-out forwards;
+}
+
+.image-dialog-overlay {
+  position: relative;
+  width: 1200px;
+  max-width: calc(100% - 40px);
+  height: auto;
+  max-height: 90vh;
+  background-color: #121212;
+  z-index: 10001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  border-radius: 15px;
+  margin: 0;
+  overflow: hidden;
+  transform: scale(0.95) translateZ(0);
+  opacity: 0;
+  transition: all 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+  will-change: transform, opacity;
+  backface-visibility: hidden;
+  -webkit-font-smoothing: subpixel-antialiased;
+}
+
+@keyframes dialogFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes dialogFadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+}
+
+.image-dialog-overlay.active {
+  opacity: 1;
+  transform: scale(1);
+  animation: dialogFadeIn 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.image-dialog-overlay:not(.active) {
+  animation: dialogFadeOut 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+/* Make sure the dialog backdrop centers content properly */
+@keyframes backdropFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes backdropFadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+.image-dialog-content {
+  width: 100%;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  max-height: 90vh;
+}
+
+.image-dialog-content::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
+.image-dialog-layout {
+  display: flex;
+  flex-direction: column;
+}
+
+.image-dialog-image {
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+  margin-bottom: 0;
+  border-radius: 15px 15px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #0a0a0a;
+}
+
+.image-dialog-image img {
+  max-width: 100%;
+  max-height: 300px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transform: translateY(10px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition-delay: 0.2s;
+  opacity: 0;
+}
+
+.image-dialog-overlay.active .image-dialog-image img {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.image-dialog-details {
+  padding: 30px;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.image-dialog-details h2 {
+  font-size: 24px;
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.image-dialog-details h3 {
+  font-size: 18px;
+  margin-top: 25px;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+.image-dialog-description {
+  margin-bottom: 25px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 16px;
+}
+
+.image-dialog-section {
+  margin-bottom: 25px;
+}
+
+.image-dialog-section p {
+  margin-top: 0;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.image-dialog-metadata-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 15px;
+  margin: 25px 0;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.image-dialog-metadata {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+}
+
+.image-dialog-technologies {
+  margin: 25px 0;
+}
+
+.image-dialog-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.image-dialog-tag {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.image-dialog-features {
+  margin: 15px 0;
+  padding-left: 20px;
+}
+
+.image-dialog-features li {
+  margin-bottom: 8px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.5;
+}
+
+.image-dialog-link {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.image-dialog-button {
+  display: inline-block;
+  padding: 12px 24px;
+  background-color: #3a86ff;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-align: center;
+}
+
+.image-dialog-button:hover {
+  background-color: #2667cc;
+  transform: translateY(-2px);
+}
+
+/* Staggered animation for content sections */
+.image-dialog-details > * {
+  opacity: 0;
+  transform: translateY(15px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.image-dialog-overlay.active .image-dialog-details > * {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Staggered delays for different sections */
+.image-dialog-overlay.active .image-dialog-details > *:nth-child(1) {
+  transition-delay: 0.3s;
+}
+
+.image-dialog-overlay.active .image-dialog-details > *:nth-child(2) {
+  transition-delay: 0.4s;
+}
+
+.image-dialog-overlay.active .image-dialog-details > *:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+.image-dialog-overlay.active .image-dialog-details > *:nth-child(4) {
+  transition-delay: 0.6s;
+}
+
+.image-dialog-overlay.active .image-dialog-details > *:nth-child(5) {
+  transition-delay: 0.7s;
+}
+
+.image-dialog-close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 36px;
+  height: 36px;
+  font-size: 20px;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.5);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10002; /* Higher than overlay */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+  padding: 0;
+  line-height: 1;
+}
+
+.image-dialog-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: rotate(90deg);
+}
+
+/* Prevent body scrolling when dialog is open */
+body.dialog-open {
+  overflow: hidden;
+}
+/* Code Block Styling for Technical Details */
+
+.technical-details-content {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.technical-details-content p {
+  margin-bottom: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.code-block-wrapper {
+  margin: 1.5rem 0;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #1e1e1e;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.code-block-header {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  background-color: #252525;
+  border-bottom: 1px solid #333;
+}
+
+.code-language {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #e6e6e6;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.technical-details-content pre {
+  margin: 0;
+  padding: 16px;
+  overflow-x: auto;
+  font-family: 'Fira Code', Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  tab-size: 4;
+  color: #e6e6e6;
+}
+
+.technical-details-content code {
+  font-family: inherit;
+  background: transparent;
+  padding: 0;
+  white-space: pre;
+}
+
+/* Language-specific syntax highlighting base colors */
+.language-javascript, .language-typescript, .language-js, .language-ts {
+  color: #dcdcaa;
+}
+
+.language-html {
+  color: #ce9178;
+}
+
+.language-css {
+  color: #9cdcfe;
+}
+
+.language-python {
+  color: #4ec9b0;
+}
+
+/* Increase code contrast on darker backgrounds */
+.image-dialog-details .technical-details-content code {
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .technical-details-content pre {
+    font-size: 0.8rem;
+    padding: 12px;
+  }
+  
+  .code-block-header {
+    padding: 6px 12px;
+  }
+}
+
+/* Some optional themes for the code blocks */
+.code-block-wrapper.theme-dark {
+  background-color: #1a1a1a;
+}
+
+.code-block-wrapper.theme-light {
+  background-color: #f5f5f5;
+}
+
+.code-block-wrapper.theme-light .code-block-header {
+  background-color: #e0e0e0;
+}
+
+.code-block-wrapper.theme-light .code-language {
+  color: #333;
+}
+
+.code-block-wrapper.theme-light pre,
+.code-block-wrapper.theme-light code {
+  color: #333;
+}
+
+/* Code Block Styling for Technical Details - Matching the screenshot design */
+
+.technical-details-formatted {
+  font-family: monospace;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* Section headings like "### 3. ORDER MANAGEMENT" */
+.code-section-heading {
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #333;
+  padding: 8px 12px;
+  margin: 20px 0 0 0;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  font-family: monospace;
+  letter-spacing: 0.5px;
+}
+
+.heading-marker {
+  color: #888;
+}
+
+/* Language label (PYTHON, JAVASCRIPT) */
+.code-language-label {
+  display: block;
+  background-color: #222;
+  color: #888;
+  padding: 6px 12px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid #333;
+}
+
+/* Code block container */
+.code-block-container {
+  margin: 0 0 20px 0;
+  background-color: #1a1a1a;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+/* Code content area */
+.code-content {
+  padding: 12px;
+  margin: 0;
+  background-color: #1a1a1a;
+  overflow-x: auto;
+  color: #ddd;
+  font-family: 'Courier New', monospace;
+  font-size: 0.9rem;
+}
+
+/* Individual lines of code */
+.code-line {
+  white-space: pre-wrap;
+  line-height: 1.4;
+  padding: 1px 0;
+}
+
+/* Text content between code blocks */
+.markdown-text {
+  padding: 8px 12px;
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.markdown-paragraph {
+  margin: 8px 0;
+  color: #ccc;
+}
+
+.markdown-list-item {
+  margin: 4px 0 4px 20px;
+  list-style-type: disc;
+  color: #ccc;
+}
+
+/* Styling for the "## Usage" section with numbered list */
+.markdown-text p:first-child:not(:only-child) {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Overall container styling */
+.image-dialog-section .technical-details-content {
+  background-color: #222;
+  border-radius: 6px;
+  border: 1px solid #333;
+  overflow: hidden;
+  font-family: monospace;
+}
+
+/* Make sure code doesn't overflow container */
+.technical-details-formatted pre {
+  overflow-x: auto;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .code-content {
+    font-size: 0.8rem;
+  }
+  
+  .code-language-label {
+    font-size: 0.7rem;
+  }
+  
+  .code-section-heading {
+    font-size: 0.9rem;
+  }
 }

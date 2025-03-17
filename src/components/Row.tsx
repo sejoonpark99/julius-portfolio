@@ -1,6 +1,9 @@
-import { RowProps, RowDOMElements } from '../types/types';
+import React, { useState } from 'react';
+import { RowProps, ImageData, RowDOMElements } from '../types/types';
+import ImageDialog from './ImageDialog';
 import { PreviewItemInstance } from './PreviewItem';
 
+// Re-add the RowInstance class and export it
 export class RowInstance {
   // DOM elements
   DOM: RowDOMElements = {
@@ -29,6 +32,20 @@ export class RowInstance {
 }
 
 const Row: React.FC<RowProps> = ({ title, images, index }) => {
+  const [selectedImage, setSelectedImage] = useState<ImageData | null>(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleImageClick = (e: React.MouseEvent, image: ImageData) => {
+    // Stop event propagation to prevent the row click handler from firing
+    e.stopPropagation();
+    setSelectedImage(image);
+    setIsDialogOpen(true);
+  };
+
+  const closeDialog = () => {
+    setIsDialogOpen(false);
+  };
+
   return (
     <div className="row">
       <div className="cell cell--text">
@@ -38,7 +55,12 @@ const Row: React.FC<RowProps> = ({ title, images, index }) => {
       </div>
       <div className="cell cell--images">
         {images.map((image, i) => (
-          <div key={i} className="cell__img">
+          <div 
+            key={i} 
+            className="cell__img" 
+            onClick={(e) => handleImageClick(e, image)}
+            style={{ cursor: 'pointer' }}
+          >
             <div 
               className="cell__img-inner" 
               style={{ backgroundImage: `url(${image.src})` }}
@@ -46,6 +68,12 @@ const Row: React.FC<RowProps> = ({ title, images, index }) => {
           </div>
         ))}
       </div>
+      
+      <ImageDialog 
+        isOpen={isDialogOpen} 
+        onClose={closeDialog} 
+        image={selectedImage} 
+      />
     </div>
   );
 };

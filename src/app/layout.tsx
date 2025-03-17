@@ -1,53 +1,48 @@
-import './globals.css';
-import { Metadata } from 'next';
+import React from 'react';
 import Script from 'next/script';
-
-export const metadata: Metadata = {
-  title: 'Julius | Portfolio',
-  description: 'Portfolio website of Julius Park',
-};
+import './globals.css';
+import FloatingChatButton from '../components/FloatingChatButton';
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
+  // Use suppressHydrationWarning on the html element
   return (
-    <html lang="en" className="js">
+    <html lang="en" suppressHydrationWarning>
       <head>
-        <link rel="stylesheet" href="https://use.typekit.net/gdf6msi.css" />
-        <Script id="webfont-loader" strategy="beforeInteractive">
-          {`
-            WebFontConfig = {
-              typekit: {
-                id: 'gdf6msi'
-              }
-            };
-            
-            (function(d) {
-              var wf = d.createElement('script'), s = d.scripts[0];
-              wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
-              wf.async = true;
-              s.parentNode.insertBefore(wf, s);
-            })(document);
-          `}
-        </Script>
+        {/* Add any necessary meta tags */}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Portfolio</title>
+        
+        {/* Move webfonts to Script component for client-side loading */}
+        <Script
+          id="webfontloader"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              WebFontConfig = {
+                custom: {
+                  families: ['LoRes22Serif', 'NeueHaasGroteskDisplay', 'AugerMono'],
+                  urls: ['/fonts.css']
+                }
+              };
+              (function(d) {
+                var wf = d.createElement('script'), s = d.scripts[0];
+                wf.src = '/webfontloader.js';
+                wf.async = true;
+                s.parentNode.insertBefore(wf, s);
+              })(document);
+            `,
+          }}
+        />
       </head>
-      <body className="loading">
-        {children}
-        <Script id="css-vars-check" strategy="afterInteractive">
-          {`
-            var supportsCssVars = function() {
-              var e, t = document.createElement("style");
-              return t.innerHTML = "root: { --tmp-var: bold; }", 
-              document.head.appendChild(t), 
-              e = !!(window.CSS && window.CSS.supports && window.CSS.supports("font-weight", "var(--tmp-var)")), 
-              t.parentNode.removeChild(t), e
-            };
-            supportsCssVars() || alert("Please view this demo in a modern browser that supports CSS Variables.");
-          `}
-        </Script>
-      </body>
+        <body>
+            {children}
+            <FloatingChatButton />
+        </body>
     </html>
   );
 }
