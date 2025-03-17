@@ -200,12 +200,6 @@ const ImageDialog: React.FC<ImageDialogProps> = ({ isOpen, onClose, image }) => 
                   </div>
                 )}
                 
-                {image.details?.client && (
-                  <div className="image-dialog-metadata">
-                    <strong>Client:</strong> {image.details.client}
-                  </div>
-                )}
-                
                 {image.details?.role && (
                   <div className="image-dialog-metadata">
                     <strong>Role:</strong> {image.details.role}

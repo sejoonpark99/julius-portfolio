@@ -28,6 +28,7 @@ export interface ImageData {
     src: string;
     details?: {
       title?: string;
+      duration?: string;
       description?: string;
       overview?: string;
       technicalDetails?: string;
