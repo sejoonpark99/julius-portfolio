@@ -27,7 +27,7 @@ export class RowInstance {
     this.DOM.titleWrap = this.DOM.el.querySelector('.cell__title');
     this.DOM.title = this.DOM.titleWrap?.querySelector('.oh__inner') || null;
     this.DOM.imagesWrap = this.DOM.el.querySelector('.cell--images');
-    this.DOM.images = [...this.DOM.el.querySelectorAll('.cell__img')];
+    this.DOM.images = [...this.DOM.el.querySelectorAll('.cell__img')] as HTMLElement[];
   }
 }
 

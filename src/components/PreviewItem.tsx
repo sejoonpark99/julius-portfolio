@@ -20,7 +20,7 @@ export class PreviewItemInstance {
     this.DOM.el = DOM_el;
     this.DOM.title = this.DOM.el.querySelector('.preview__item-title > .oh__inner');
     this.DOM.grid = this.DOM.el.querySelector('.grid');
-    this.DOM.images = [...this.DOM.el.querySelectorAll('.cell__img')];
+    this.DOM.images = [...this.DOM.el.querySelectorAll('.cell__img')] as HTMLElement[];
   }
 }
 

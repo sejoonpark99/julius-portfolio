@@ -16,6 +16,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
+    "target": "es2015",
     "plugins": [
       {
         "name": "next"
@@ -31,4 +32,5 @@
   "exclude": [
     "node_modules"
   ]
+  
 }
