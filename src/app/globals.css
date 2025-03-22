@@ -44,7 +44,6 @@ body {
 	display: inline-block;
 }
 
-/* Page Loader */
 .js .loading::before,
 .js .loading::after {
 	content: '';
@@ -114,24 +113,16 @@ a:hover {
 	outline: none;
 }
 
-/* Better focus styles from https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible */
 a:focus {
-	/* Provide a fallback style for browsers
-	 that don't support :focus-visible */
 	outline: none;
 	background: lightgrey;
 }
 
 a:focus:not(:focus-visible) {
-	/* Remove the focus indicator on mouse-focus for browsers
-	 that do support :focus-visible */
 	background: transparent;
 }
 
 a:focus-visible {
-	/* Draw a very noticeable focus style for
-	 keyboard-focus on browsers that do support
-	 :focus-visible */
 	outline: 2px solid red;
 	background: transparent;
 }
@@ -407,9 +398,6 @@ a:focus-visible {
 	}
 }
 
-/* Add to your globals.css file */
-
-/* Container positioning for hover effects */
 .images-container {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -425,7 +413,6 @@ a:focus-visible {
     cursor: pointer;
   }
   
-  /* The main hover card overlay effect */
   .image-wrapper:hover {
     transform: scale(1.03);
     z-index: 10;
@@ -482,7 +469,6 @@ a:focus-visible {
     border-radius: 4px;
   }
   
-  /* Page dimming effect when hovering on an image */
   .content {
     position: relative;
   }
@@ -508,7 +494,6 @@ a:focus-visible {
     opacity: 1;
   }
 
-  /* Overlay styles */
 .portfolio-overlay {
     position: fixed;
     top: 0;
@@ -644,12 +629,10 @@ a:focus-visible {
     background-color: #2667cc;
   }
   
-  /* When overlay is open, prevent body scrolling */
   body.overlay-open {
     overflow: hidden;
   }
   
-  /* Make row clickable */
   .row {
     cursor: pointer;
     transition: opacity 0.3s ease;
@@ -659,8 +642,7 @@ a:focus-visible {
     opacity: 0.9;
   }
 
-  /* Add to your globals.css or component CSS */
-.preview__item-description {
+  .preview__item-description {
     margin: 2rem 0;
     max-width: 800px;
     padding: 0 1rem;
@@ -672,8 +654,7 @@ a:focus-visible {
     font-size: 1.1rem;
     color: #333;
   }
-  
-  /* If you want to add some styling for text on smaller screens */
+
   @media (max-width: 768px) {
     .preview__item-description {
       padding: 0 1.5rem;
@@ -684,14 +665,10 @@ a:focus-visible {
     }
   }
 
-  /* styles/gooey-chat.css */
-
-/* Gooey Filter Effect */
 .gooey-container {
     filter: url('#gooey');
   }
-  
-  /* Base animation for blobs */
+
   @keyframes blobFloat {
     0%, 100% {
       transform: translateY(0) scale(1);
@@ -701,7 +678,6 @@ a:focus-visible {
     }
   }
   
-  /* Different animations for each blob */
   .blob-1 {
     animation: blobFloat 3s ease-in-out infinite;
   }
@@ -713,8 +689,7 @@ a:focus-visible {
   .blob-3 {
     animation: blobFloat 3.5s ease-in-out infinite 1s;
   }
-  
-  /* Chat window animations */
+
   @keyframes popIn {
     0% {
       transform: scale(0.5);
@@ -729,8 +704,7 @@ a:focus-visible {
   .pop-in {
     animation: popIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
   }
-  
-  /* Button hover animation */
+
   .chat-button {
     transition: all 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55);
   }
@@ -739,7 +713,6 @@ a:focus-visible {
     transform: scale(1.1);
   }
   
-  /* Additional utility classes for gooey effect */
   .gooey-blob {
     background-color: black;
     border-radius: 50%;
@@ -748,7 +721,6 @@ a:focus-visible {
   }
 
   .flex-1 {
-    /* Add more bottom margin to create space between messages and input */
     margin-bottom: 12px; 
     margin-top: 12px;
   }
@@ -764,12 +736,10 @@ a:focus-visible {
     transform: translateY(-5px);
   }
   
-  /* Make sure links don't affect the grid layout */
   .grid a {
     display: contents;
   }
   
-  /* Add a subtle indicator that these are clickable */
   .cell__img-inner::after {
     content: '';
     position: absolute;
@@ -787,14 +757,6 @@ a:focus-visible {
     opacity: 1;
   }
 
-/* Updated Image Dialog Styles - Top Positioned */
-/* Dialog backdrop to ensure proper layering */
-/* Fixed Dialog Styles */
-/* Dialog Z-Index Fixes */
-/* Dialog Z-Index Fixes */
-/* Dialog Z-Index Fixes */
-/* Make sure the dialog backdrop centers content properly */
-/* Force GPU acceleration and optimize animations */
 .dialog-backdrop {
   position: fixed;
   top: 0;
@@ -880,7 +842,6 @@ a:focus-visible {
   animation: dialogFadeOut 0.4s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-/* Make sure the dialog backdrop centers content properly */
 @keyframes backdropFadeIn {
   from {
     opacity: 0;
@@ -909,7 +870,7 @@ a:focus-visible {
 }
 
 .image-dialog-content::-webkit-scrollbar {
-  display: none; /* Chrome, Safari, Opera */
+  display: none; 
 }
 
 .image-dialog-layout {
@@ -1055,7 +1016,6 @@ a:focus-visible {
   transform: translateY(-2px);
 }
 
-/* Staggered animation for content sections */
 .image-dialog-details > * {
   opacity: 0;
   transform: translateY(15px);
@@ -1067,7 +1027,6 @@ a:focus-visible {
   transform: translateY(0);
 }
 
-/* Staggered delays for different sections */
 .image-dialog-overlay.active .image-dialog-details > *:nth-child(1) {
   transition-delay: 0.3s;
 }
@@ -1100,7 +1059,7 @@ a:focus-visible {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  z-index: 10002; /* Higher than overlay */
+  z-index: 10002;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1114,11 +1073,9 @@ a:focus-visible {
   transform: rotate(90deg);
 }
 
-/* Prevent body scrolling when dialog is open */
 body.dialog-open {
   overflow: hidden;
 }
-/* Code Block Styling for Technical Details */
 
 .technical-details-content {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
@@ -1172,7 +1129,6 @@ body.dialog-open {
   white-space: pre;
 }
 
-/* Language-specific syntax highlighting base colors */
 .language-javascript, .language-typescript, .language-js, .language-ts {
   color: #dcdcaa;
 }
@@ -1189,12 +1145,10 @@ body.dialog-open {
   color: #4ec9b0;
 }
 
-/* Increase code contrast on darker backgrounds */
 .image-dialog-details .technical-details-content code {
   color: rgba(255, 255, 255, 0.95);
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .technical-details-content pre {
     font-size: 0.8rem;
@@ -1206,7 +1160,6 @@ body.dialog-open {
   }
 }
 
-/* Some optional themes for the code blocks */
 .code-block-wrapper.theme-dark {
   background-color: #1a1a1a;
 }
@@ -1228,15 +1181,12 @@ body.dialog-open {
   color: #333;
 }
 
-/* Code Block Styling for Technical Details - Matching the screenshot design */
-
 .technical-details-formatted {
   font-family: monospace;
   line-height: 1.5;
   color: rgba(255, 255, 255, 0.9);
 }
 
-/* Section headings like "### 3. ORDER MANAGEMENT" */
 .code-section-heading {
   font-size: 1rem;
   font-weight: bold;
@@ -1254,7 +1204,6 @@ body.dialog-open {
   color: #888;
 }
 
-/* Language label (PYTHON, JAVASCRIPT) */
 .code-language-label {
   display: block;
   background-color: #222;
@@ -1267,7 +1216,6 @@ body.dialog-open {
   border-bottom: 1px solid #333;
 }
 
-/* Code block container */
 .code-block-container {
   margin: 0 0 20px 0;
   background-color: #1a1a1a;
@@ -1275,7 +1223,6 @@ body.dialog-open {
   overflow: hidden;
 }
 
-/* Code content area */
 .code-content {
   padding: 12px;
   margin: 0;
@@ -1286,14 +1233,12 @@ body.dialog-open {
   font-size: 0.9rem;
 }
 
-/* Individual lines of code */
 .code-line {
   white-space: pre-wrap;
   line-height: 1.4;
   padding: 1px 0;
 }
 
-/* Text content between code blocks */
 .markdown-text {
   padding: 8px 12px;
   margin: 10px 0;
@@ -1311,13 +1256,11 @@ body.dialog-open {
   color: #ccc;
 }
 
-/* Styling for the "## Usage" section with numbered list */
 .markdown-text p:first-child:not(:only-child) {
   font-weight: bold;
   margin-bottom: 10px;
 }
 
-/* Overall container styling */
 .image-dialog-section .technical-details-content {
   background-color: #222;
   border-radius: 6px;
@@ -1326,12 +1269,10 @@ body.dialog-open {
   font-family: monospace;
 }
 
-/* Make sure code doesn't overflow container */
 .technical-details-formatted pre {
   overflow-x: auto;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .code-content {
     font-size: 0.8rem;

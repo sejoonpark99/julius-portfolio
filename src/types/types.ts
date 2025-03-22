@@ -74,20 +74,3 @@ export interface RowComponentProps extends RowProps {
     onImageClick: (image: ImageData) => void;
 }
 
-interface ImageDetails {
-  title?: string;
-  description?: string;
-  overview?: string;
-  technicalDetails?: string;
-  challenges?: string;
-  date?: string;
-  role?: string;
-  technologies?: string[];
-  features?: string[];
-  link?: string;
-}
-
-interface PreviewItem {
-  title: string;
-  images: ImageData[];
-}

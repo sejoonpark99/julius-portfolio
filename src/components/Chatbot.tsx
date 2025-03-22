@@ -1,4 +1,3 @@
-// src/components/Chatbot.tsx
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -157,7 +156,6 @@ export default function Chatbot() {
         cursor: isDragging ? 'grabbing' : 'grab'
       }}
     >
-      {/* Chat button */}
       <button 
         onMouseDown={handleMouseDown}
         onClick={toggleChatbot}
@@ -181,10 +179,8 @@ export default function Chatbot() {
         )}
       </button>
       
-      {/* Chat window */}
       {isOpen && (
         <div className="absolute top-20 left-0 w-96 sm:w-[500px] bg-white rounded-none shadow-2xl border border-black flex flex-col h-[500px] overflow-hidden transition-all duration-300 ease-in-out">
-          {/* Header */}
           <div className="bg-black text-white p-4 flex justify-between items-center uppercase tracking-wide font-bold">
             <div className="flex items-center">
               CHAT WITH JULIUS
@@ -200,9 +196,7 @@ export default function Chatbot() {
             </button>
           </div>
           
-          {/* Messages - Only showing the current exchange */}
           <div className="flex-1 p-4 overflow-y-auto space-y-4 flex flex-col">
-            {/* Julius's message */}
             <div className="flex justify-start gap-2">
               <div className="flex flex-col max-w-[80%]">
                 <div className="border border-black px-4 py-3">
@@ -219,7 +213,6 @@ export default function Chatbot() {
               </div>
             </div>
             
-            {/* User's message - only show if there's a current message */}
             {currentUserMessage && (
               <div className="flex justify-end gap-2 mt-auto">
                 <div className="flex flex-col max-w-[80%]">
@@ -234,7 +227,6 @@ export default function Chatbot() {
             )}
           </div>
           
-          {/* Input */}
           <div className="border-t border-black p-4 bg-white">
             <form onSubmit={handleSubmit} className="flex space-x-2">
               <input

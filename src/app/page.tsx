@@ -8,7 +8,6 @@ import PortfolioContent from '../components/PortfolioContent';
 import Preview from '../components/Preview';
 import Footer from '../components/Footer';
 
-// Portfolio data - same as defined in PortfolioContent.tsx
 const portfolioData = [
   //STACK
   {
@@ -267,7 +266,6 @@ def close_position(app, position):
 \`\`\``,
           challenges: "The system addresses several challenges including maintaining persistent connections to IB servers, properly formatting contracts for different asset types, handling order status callbacks, and managing environment variables for configuration.",
           date: "2024",
-          // role: "Developer",
           technologies: ["Python", "Interactive Brokers API", "Threading", "Command Line Interface", "Futures Trading", "Equities Trading"],
           features: [
             "Interactive Terminal UI with emoji indicators",
@@ -486,7 +484,6 @@ def close_position(app, position):
           
           challenges: `We start by setting up our data. In a real scenario, you would load intraday price data for your target instruments (e.g., a stock and its futures contract, or two correlated stocks). We then calculate a 20-period and 50-period moving average on the primary instrument (Price1) to detect trends – if the 20 crosses above the 50, that's a bullish momentum signal, and if it crosses below, that's bearish. We also compute the price spread between Price2 and Price1 along with its rolling mean and standard deviation, to standardize it into a z-score (Spread_Z). When Spread_Z exceeds +2 or -2, it indicates a rare divergence (beyond 2 standard deviations).\n\nThe main loop iterates through each time index (each "bar" of intraday data). It checks conditions in sequence:\n\nMomentum trading block: If we're not already in a momentum trade (position1 == 0 and no active pair trade using Price1), we look for a crossover signal. On a buy signal, we calculate the position size (shares) such that if our stop-loss (1% below entry) is hit, the loss is ~1% of capital. We open the long position (position1 = shares). Similarly, for a short signal, we set a stop 1% above entry and size the short position. If we already have a momentum position open, we continuously check for exit: either the price hitting the stop-loss level or the moving averages crossing in the opposite direction (trend reversal). When an exit condition triggers, we set position1 back to 0 (flat) and log the exit.\n\nPairs trading block: If no pair trade is active, we check the spread z-score. A spread_z > 2 means Price2 is relatively expensive vs Price1, so we short Price2 and long Price1. We set a stop for the spread (e.g., if it widens another half std dev) and size the trade so that this worst-case spread move would cost 1% of capital. We update position1 and position2 accordingly and mark pair_trade_active = True. (Note: we adjust the same position1 variable, meaning if we had a momentum position on Price1, this code would aggregate with it – in practice you might manage them separately, but net exposure is what matters for execution). Likewise, if spread_z < -2, we long Price2 and short Price1.\n\nIf a pair trade is already active, we watch for mean reversion (|z| < 1) to take profit and close both legs, or if the spread moves further against us to trigger the stop, we also close both legs. The trade log will record entries and exits. For instance, you might see a log entry like (38, Long Price1 & Short Price2 (Pairs), 2000, 0.75) meaning at time index 38, the strategy opened a pairs trade with 2000 shares (long Price1, short Price2) when the spread was $0.75 (Price2 was $0.75 above Price1). Later an exit might be logged when that spread returns near 0 or a stop if it went the wrong way. The momentum trades will have similar logs with "Buy" or "Sell" and "Exit" when closed.\n\nThis implementation is a basic deterministic strategy. In production, you would integrate this with real-time data input and order execution API calls. The core ideas demonstrated are: how to generate signals from data, how to size positions safely, and how to enforce exits. The use of pandas makes it convenient to compute indicators; in a live system, you might maintain rolling calculations to update these on the fly rather than recalculating on each loop iteration for efficiency.`,
           date: "2024",
-          // role: "Project",
           technologies: [
             "Python",
             "Pandas",
@@ -636,7 +633,6 @@ def close_position(app, position):
           \`\`\``,
           challenges: "Balancing ultra-low latency with system robustness, real-time performance monitoring, and maintaining physical equipment.",
           date: "2024",
-          // role: "System Architect / Infrastructure Engineer",
           technologies: [
             "Linux",
             "Python",
@@ -648,9 +644,6 @@ def close_position(app, position):
           ],
           features: [
             "Not using in current market, too expensive",
-            // "Dynamic receipt parsing",
-            // "Voice command-based item assignment",
-            // "Manual item selection with real-time total calculation"
           ],
           link: "#contact"
         }
@@ -959,7 +952,6 @@ def close_position(app, position):
           \`\`\``,
           challenges: "Mobile development is tedious, UI is the most difficult aspect of it. OpenAI and WhisperAI cannot be used without internet access, and you don't want to download full models onto a phone.",
           date: "2024",
-          // role: "Mobile App Developer / Full-Stack Engineer",
           technologies: [
             "React Native",
             "Expo",
@@ -972,9 +964,6 @@ def close_position(app, position):
           ],
           features: [
             "Still in development",
-            // "Dynamic receipt parsing",
-            // "Voice command-based item assignment",
-            // "Manual item selection with real-time total calculation"
           ],
         }
       },
@@ -1740,7 +1729,7 @@ def close_position(app, position):
     index: 3
   }
 ];
-// Dynamically import the PortfolioController to avoid SSR issues with GSAP
+
 const PortfolioController = dynamic(
   () => import('../components/PortfolioController'),
   { ssr: false }

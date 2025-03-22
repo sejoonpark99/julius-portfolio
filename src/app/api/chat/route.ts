@@ -1,4 +1,3 @@
-// src/app/api/chat/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import OpenAI from 'openai';
 import { Redis } from '@upstash/redis';
@@ -48,8 +47,7 @@ async function rateLimit(ip: string): Promise<{ success: boolean; limit: number;
   return { success: true, limit: RATE_LIMIT_REQUESTS, remaining: RATE_LIMIT_REQUESTS - current.count - 1 };
 }
 
-// You can edit this profile directly in this file
-// Add as much information as you want about yourself
+// Context data for chatbot -> probably better as a .md file
 const juliusProfile = `
 Name: Julius SeJoon Park
 Background: Software Engineer at ComputerTalk, specializing in full stack development. Graduated from the University of Waterloo in Engineering.
@@ -949,10 +947,9 @@ Contact:
 
 `;
 
+
 export async function POST(req: NextRequest) {
   try {
-
-    // Get client IP address
     const ip = req.headers.get('x-forwarded-for') || 'unknown';
 
     // Apply rate limiting
@@ -972,11 +969,10 @@ export async function POST(req: NextRequest) {
         }
       );
     }
-    // Get message from request body
+
     const body = await req.json();
     const { message, history = [] } = body;
     
-    // Prepare messages for OpenAI
     const messages = [
       {
         role: 'system',
@@ -1001,15 +997,13 @@ ${juliusProfile}
 Remember, you're not an AI assistant helping a user - you're Julius Park having a direct conversation with someone interested in your work.
 `
       },
-      // Include conversation history
       ...history,
-      // Add the current message
       { role: 'user', content: message }
     ];
     
     // Call OpenAI API
     const completion = await openai.chat.completions.create({
-      model: 'gpt-4o-mini', // You can use 'gpt-4' if you have access and prefer it
+      model: 'gpt-4o-mini',
       messages: messages,
       max_tokens: 500,
       temperature: 0.7,

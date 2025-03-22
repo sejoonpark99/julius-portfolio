@@ -2,7 +2,6 @@ import React, { useRef } from 'react';
 import Row from './Row';
 import { RowProps } from '../types/types';
 
-// Portfolio data - in a real application, this would be fetched from an API or CMS
 const portfolioData: RowProps[] = [
   //STACK
   {
@@ -48,16 +47,8 @@ const portfolioData: RowProps[] = [
           overview: "Contributed to the enhancement of client address accessibility and vehicle status tracking through test script development and database optimization.",
           technicalDetails: "Utilized QTP for test automation and improved PostgreSQL query speed by 30%. Collaborated on vehicle tracker visualization in React.",
           challenges: "Optimized data workflows between PostgreSQL and Snowflake data stores while ensuring data integrity and improving system performance.",
-          // client: "Economical Insurance",
           duration: "4 months",
           technologies: ["QTP", "PostgreSQL", "React", "Snowflake"],
-          // features: [
-          //   "Test script development",
-          //   "Client address accessibility improvements",
-          //   "Vehicle status tracking enhancements",
-          //   "30% PostgreSQL query speed improvement",
-          //   "Data model design for Snowflake integration"
-          // ]
         }
       },
       { 
@@ -119,16 +110,8 @@ const portfolioData: RowProps[] = [
       - Reduced design iteration time through automated data processing
       - Improved service quality through more accurate plan generation
       \`\`\``,
-          // challenges: "Coordinated complex project information across multiple stakeholders while maintaining tight submission deadlines and ensuring consistency across plans. Needed to balance technical implementation with user experience, ensuring the tool remained intuitive despite underlying complexity. Performance optimization was critical when handling large Civil 3D datasets without compromising speed.",
           duration: "4 months",
           technologies: [".NET", "ObjectARX", "AutoCAD", "CIVIL3D"],
-          // features: [
-          //   "CIVIL3D design tool development",
-          //   "Grading plan parameter management",
-          //   "Survey data export",
-          //   "Project coordination",
-          //   "Document organization for submissions"
-          // ]
         }
       },
       { 
@@ -138,10 +121,8 @@ const portfolioData: RowProps[] = [
           role: "Software Engineer",
           date: "September 2022 - December 2022",
           description: "Internship",
-          // overview: "Successfully contributed to a major dashboard redesign project, delivering ahead of schedule before Q4.",
           technicalDetails: "Utilized React, Redux, GraphQL, and SpringBoot to create flexible and reusable dashboard components. Worked on modularizing statistical data for efficient direct database querying.",
           challenges: "Balanced feature development with maintenance of a large legacy codebase while meeting tight delivery deadlines.",
-          // client: "OpenText",
           duration: "4 months",
           technologies: ["React", "Redux", "GraphQL", "SpringBoot", "C#"],
           features: [
@@ -160,7 +141,6 @@ const portfolioData: RowProps[] = [
           role: "Software Engineer",
           date: "July 2023 - Present",
           description: "Fulltime",
-          // overview: "Leading development efforts on multiple fronts including data visualization, voice infrastructure, and real-time services that directly contributed to major contract wins.",
           technicalDetails: `### AZURE OPENAI AGENTIC SYSTEM FOR IVR
 
           \`\`\`
@@ -307,26 +287,13 @@ const portfolioData: RowProps[] = [
           - Enhanced overall customer satisfaction metrics through faster, more contextually relevant interactions, with post-implementation surveys showing a 
             24% improvement in resolution satisfaction scores
           \`\`\``,
-          // challenges: "Optimized query performance for large-scale agent statistics, reducing average time by 5.1 seconds while maintaining data integrity across 1 million+ records.",
-          // client: "ComputerTalk",
           duration: "2 years",
           technologies: ["TypeScript", "Angular", "C#", ".NET Core", "Redis", "SQL", "SignalR", "gRPC", "OpenAI TTS"],
-          // features: [
-          //   "Real-time dashboard displays for 100,000+ datasets",
-          //   "Low latency IVR (voice) infrastructure",
-          //   "Real-time transcription service with granular permissions",
-          //   "SQL query optimization reducing response time by 5.1 seconds",
-          //   "Internal chatbot using Azure Bot Service and LUIS"
-          // ]
         }
       },
       { 
         src: '/img/blank.jpg',
         details: {
-          // title: "More Information",
-          // description: "Additional details about my professional experience are available upon request.",
-          // overview: "I'm always happy to discuss my experience in more detail or provide specific examples of projects and achievements.",
-          // link: "#contact"
         }
       },
     ],
@@ -453,19 +420,8 @@ def close_position(app, position):
 4. Enter requested parameters (symbol, quantity, price)
 5. Confirm execution
 \`\`\``,
-          // challenges: "The system addresses several challenges including maintaining persistent connections to IB servers, properly formatting contracts for different asset types, handling order status callbacks, and managing environment variables for configuration.",
           date: "2024",
-          // role: "Developer",
           technologies: ["Python", "Interactive Brokers API", "Threading", "Command Line Interface", "Futures Trading", "Equities Trading"],
-          // features: [
-          //   "Interactive Terminal UI with emoji indicators",
-          //   "Support for both futures and equities trading",
-          //   "Market and limit order execution",
-          //   "Position management and reporting",
-          //   "One-click position closure capability",
-          //   "Environment variable configuration"
-          // ],
-          // link: "#contact"
         }
       },
       {
@@ -824,7 +780,6 @@ def close_position(app, position):
           \`\`\``,
           challenges: "Balancing ultra-low latency with system robustness, real-time performance monitoring, and maintaining physical equipment.",
           date: "2024",
-          // role: "System Architect / Infrastructure Engineer",
           technologies: [
             "Linux",
             "Python",
@@ -836,9 +791,6 @@ def close_position(app, position):
           ],
           features: [
             "Not using in current market, too expensive",
-            // "Dynamic receipt parsing",
-            // "Voice command-based item assignment",
-            // "Manual item selection with real-time total calculation"
           ],
           link: "#contact"
         }
@@ -1147,7 +1099,6 @@ def close_position(app, position):
           \`\`\``,
           challenges: "Mobile development is tedious, UI is the most difficult aspect of it. OpenAI and WhisperAI cannot be used without internet access, and you don't want to download full models onto a phone.",
           date: "2024",
-          // role: "Mobile App Developer / Full-Stack Engineer",
           technologies: [
             "React Native",
             "Expo",
@@ -1160,9 +1111,6 @@ def close_position(app, position):
           ],
           features: [
             "Still in development",
-            // "Dynamic receipt parsing",
-            // "Voice command-based item assignment",
-            // "Manual item selection with real-time total calculation"
           ],
         }
       },
@@ -1871,16 +1819,6 @@ def close_position(app, position):
       \`\`\` `,
       challenges: "IMPLEMENTING RELIABLE STATISTICAL ARBITRAGE WAS CHALLENGING DUE TO TEMPORARY BREAKDOWN OF HISTORICAL RELATIONSHIPS. THE TRANSITION FROM BACKTESTING TO LIVE EXECUTION INTRODUCED LATENCY AND DATA QUALITY ISSUES. OUR SOLUTION INCLUDES A DATA HANDLER THAT MAINTAINS PERSISTENT CONNECTIONS WITH AUTOMATIC RECONNECTION LOGIC, VALIDATES INCOMING DATA FOR ANOMALIES, AND IMPLEMENTS HEARTBEAT MONITORING TO ENSURE SYSTEM RELIABILITY. MAINTAINING CONSISTENT PERFORMANCE ACROSS DIFFERENT MARKET ENVIRONMENTS REQUIRED STRATEGY DIVERSIFICATION. WE DEVELOPED A FRAMEWORK THAT COMBINES TREND-FOLLOWING AND MEAN-REVERSION APPROACHES WITH DYNAMIC CAPITAL ALLOCATION, ADJUSTING EXPOSURE BASED ON EACH STRATEGYS RECENT PERFORMANCE AND MARKET VOLATILITY CONDITIONS.",
         date: "2024",
-        // technologies: [
-        //   "Python",
-        //   "Pandas",
-        //   "NumPy",
-        //   "Statistical Modeling",
-        //   "Time Series Analysis",
-        //   "Machine Learning",
-        //   "Technical Analysis",
-        //   "Event-Driven Architecture"
-        // ],
         features: [
           "No longer active, not able to maintain and heavily impacted performance from political issues.",
         ],
@@ -1903,12 +1841,6 @@ def close_position(app, position):
         details: {
           title: "Furniture Design",
           description: "Originally was interested in interior design but got motivations for furniture design. I do make a bunch of random things at times, started off with a large desk made from an IKEA kitchen top and metal frames from amazon. Tried building lamps, built a shed, whatever might be useful around the house",
-          // overview: "",
-          // technicalDetails: "",
-          // challenges: "",
-          // client: "",
-          // duration: "",
-          // technologies: [],
           features: [
             "Inspo 1: https://www.instagram.com/wooj.design/?hl=en",
             "Inspo 2: https://www.instagram.com/p/DBZLnHfI5zG/?hl=en",
@@ -1922,12 +1854,6 @@ def close_position(app, position):
         details: {
           title: "Blockchain",
           description: "Started interest in my first year of university. Been researching blockchain before layer 2 days, recently was looking at AI agent frameworks such as PIPPIN, swarmnode, ai16z. Currently invested in both stocks and crypto",
-          // overview: "",
-          // technicalDetails: "",
-          // challenges: "",
-          // client: "",
-          // duration: "",
-          // technologies: [],
           features: [
             "Metadata/wealth manager: https://www.sonarplatform.io/",
             "AI Agents: https://babyagi.org/, https://pippin.love/, https://swarmnode.ai/",
@@ -1940,12 +1866,6 @@ def close_position(app, position):
         details: {
           title: "Its time to Cook",
           description: "Learning how to cook so that I can stop making tasteless pasta for a week. Italian, Korean, Chinese, anything reverse seared will do",
-          // overview: "",
-          // // technicalDetails: "",
-          // challenges: "",
-          // // client: "",
-          // // duration: "",
-          // // technologies: [],
           features: [
             "Nobu black cod: https://www.instagram.com/p/DEWInV-vB_5/?hl=en",
             "Compound butter: https://www.instagram.com/p/C-8M7Jno5iB/?hl=en",

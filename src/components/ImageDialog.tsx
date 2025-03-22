@@ -15,7 +15,6 @@ const ImageDialog: React.FC<ImageDialogProps> = ({ isOpen, onClose, image }) => 
 
   useEffect(() => {
     if (isOpen) {
-      // When opening dialog
       document.body.classList.add('dialog-open');
       
       // Small delay to ensure DOM is ready before animation
@@ -44,7 +43,6 @@ const ImageDialog: React.FC<ImageDialogProps> = ({ isOpen, onClose, image }) => 
     };
   }, []);
 
-  // Handle ESC key press to close dialog
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
@@ -65,7 +63,7 @@ const ImageDialog: React.FC<ImageDialogProps> = ({ isOpen, onClose, image }) => 
       e.stopPropagation();
     }
     
-    // First, trigger the exit animation
+    // Trigger the exit animation
     setIsActive(false);
     
     // Wait for animation to complete before removing from DOM
@@ -97,7 +95,7 @@ const ImageDialog: React.FC<ImageDialogProps> = ({ isOpen, onClose, image }) => 
         const level = (section.match(/^(#+)/) || [''])[0].length;
         const headingText = section.replace(/^#+\s+/, '');
         
-        // Format heading like "### 3. ORDER MANAGEMENT"
+        // Format heading
         parsedContent.push(
           <div key={`heading-${currentIndex}`} className="code-section-heading">
             <span className="heading-marker">{section.substring(0, level)}</span> {headingText}
@@ -105,7 +103,6 @@ const ImageDialog: React.FC<ImageDialogProps> = ({ isOpen, onClose, image }) => 
         );
         currentIndex++;
       } 
-      // This is content following a heading
       else if (section.trim()) {
         // Split the section by code blocks
         const codeBlocks = section.split(/```(\w*)\n([\s\S]*?)```/g);

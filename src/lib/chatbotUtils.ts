@@ -1,6 +1,3 @@
-// src/lib/chatbotUtils.ts
-
-// Portfolio information to use in responses
 const portfolioInfo = {
     name: 'Julius',
     title: 'Software Engineer',
@@ -21,7 +18,6 @@ const portfolioInfo = {
         description: 'A personal portfolio website showcasing my projects and skills.',
         technologies: ['Next.js', 'TypeScript', 'Tailwind CSS']
       },
-      // You can add more projects here as needed
     ],
     experience: [
       {
@@ -30,7 +26,6 @@ const portfolioInfo = {
         period: 'Present',
         description: 'Working as a full stack developer creating web applications.'
       }
-      // You can add more experience entries here
     ],
     education: {
       degree: 'Engineering Degree',
@@ -38,13 +33,12 @@ const portfolioInfo = {
       year: 'Graduated'
     },
     contact: {
-      email: 'contact@example.com', // Update with your actual contact info
+      email: 'contact@example.com',
       linkedin: 'linkedin.com/in/julius',
       github: 'github.com/julius'
     }
   };
-  
-  // List of patterns to match in user input with corresponding responses
+
   const responses = [
     {
       patterns: ['hello', 'hi', 'hey', 'greetings'],
@@ -114,27 +108,22 @@ const portfolioInfo = {
     }
   ];
   
-  // Default responses when no pattern matches
   const defaultResponses = [
     `I'm not sure I understand. Feel free to ask about ${portfolioInfo.name}'s skills, projects, or experience.`,
     `Hmm, I don't have specific information about that. Would you like to know about ${portfolioInfo.name}'s background or projects instead?`,
     `I don't have an answer for that. You can ask me about ${portfolioInfo.name}'s work, skills, or how to contact them.`
   ];
   
-  // Function to get a response based on user input
   export function getChatbotResponse(userInput: string): string {
     const input = userInput.toLowerCase();
     
-    // Check for matching patterns
     for (const category of responses) {
       if (category.patterns.some(pattern => input.includes(pattern))) {
-        // Return a random response from the matching category
         const randomIndex = Math.floor(Math.random() * category.responses.length);
         return category.responses[randomIndex];
       }
     }
-    
-    // If no patterns match, return a default response
+
     const randomIndex = Math.floor(Math.random() * defaultResponses.length);
     return defaultResponses[randomIndex];
   }

@@ -1,4 +1,3 @@
-// src/components/GooeyFloatingChatButton.tsx
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -35,8 +34,7 @@ export default function GooeyFloatingChatButton() {
 
   // Button dragging handlers
   const handleButtonMouseDown = (e: React.MouseEvent) => {
-    if (isOpen) return; // Don't allow dragging button when chat is open
-    
+    // Allow dragging even when chat is open
     setIsDraggingButton(true);
     buttonDragRef.current = {
       startX: e.clientX,
@@ -47,8 +45,24 @@ export default function GooeyFloatingChatButton() {
     e.preventDefault();
   };
 
-  // Chat header dragging handlers
+  // Chat header/window dragging handlers
   const handleChatHeaderMouseDown = (e: React.MouseEvent) => {
+    // Prevent form elements from starting drag
+    if (
+      e.target instanceof HTMLInputElement || 
+      e.target instanceof HTMLButtonElement || 
+      e.target instanceof HTMLTextAreaElement ||
+      (e.target as HTMLElement).closest('form') !== null ||
+      (e.target as HTMLElement).closest('svg') !== null
+    ) {
+      return;
+    }
+    
+    // Don't start drag when clicking on the close button
+    if (isOpen && (e.target as HTMLElement).closest('button') !== null) {
+      return;
+    }
+    
     setIsDraggingChat(true);
     chatDragRef.current = {
       startX: e.clientX,
@@ -72,7 +86,7 @@ export default function GooeyFloatingChatButton() {
       });
     }
     
-    // Handle chat window dragging
+    // Handle chat window dragging - give this priority when chat is open
     if (isDraggingChat) {
       const deltaX = e.clientX - chatDragRef.current.startX;
       const deltaY = e.clientY - chatDragRef.current.startY;
@@ -82,8 +96,8 @@ export default function GooeyFloatingChatButton() {
       const chatHeight = 500; // Approximate height of chat window
       
       setChatPosition({
-        x: Math.min(Math.max(-buttonPosition.x, chatDragRef.current.startChatX + deltaX), window.innerWidth - buttonPosition.x - chatWidth),
-        y: Math.min(Math.max(-buttonPosition.y + 20, chatDragRef.current.startChatY + deltaY), window.innerHeight - buttonPosition.y - chatHeight)
+        x: Math.min(Math.max(0, chatDragRef.current.startChatX + deltaX), window.innerWidth - chatWidth),
+        y: Math.min(Math.max(0, chatDragRef.current.startChatY + deltaY), window.innerHeight - chatHeight)
       });
     }
   };
@@ -218,7 +232,7 @@ export default function GooeyFloatingChatButton() {
           top: `${buttonPosition.y}px`, 
           left: `${buttonPosition.x}px`,
           cursor: isDraggingButton ? 'grabbing' : 'grab',
-          zIndex: 1000,
+          zIndex: 10005,
           filter: isOpen ? 'none' : 'url(#gooey)',
         }}
       >
@@ -228,7 +242,7 @@ export default function GooeyFloatingChatButton() {
             onClick={toggleChatbot}
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseLeave}
-            className="bg-black hover:bg-gray-800 transition-all duration-300 text-white shadow-lg flex items-center justify-center"
+            className="bg-white text-black hover:bg-gray-200 transition-all duration-300 shadow-lg flex items-center justify-center"
             aria-label={isOpen ? "Close chat" : "Open chat"}
             title={isOpen ? "Close chat" : "Chat with Julius"}
             style={{ 
@@ -245,7 +259,7 @@ export default function GooeyFloatingChatButton() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
             ) : (
-                <span className={`text-xs ${isExpanded ? 'text-base' : 'text-xs'} transition-all duration-300`}>+CHAT+</span>
+                <span className={`${isExpanded ? 'text-base' : 'text-xs'} transition-all duration-300`}>+CHAT+</span>
             )}
         </button>
                     
@@ -253,7 +267,7 @@ export default function GooeyFloatingChatButton() {
         {!isOpen && (
           <>
             <div 
-              className="absolute bg-black rounded-none"
+              className="absolute bg-white rounded-none"
               style={{
                 width: '100px',
                 height: '20px',
@@ -264,7 +278,7 @@ export default function GooeyFloatingChatButton() {
               }}
             />
             <div 
-              className="absolute bg-black rounded-full"
+              className="absolute bg-white rounded-full"
               style={{
                 width: '100px',
                 height: '25px',
@@ -275,7 +289,7 @@ export default function GooeyFloatingChatButton() {
               }}
             />
             <div 
-              className="absolute bg-black rounded-full"
+              className="absolute bg-white rounded-full"
               style={{
                 width: '15px',
                 height: '15px',
@@ -297,22 +311,28 @@ export default function GooeyFloatingChatButton() {
               left: `${chatPosition.x}px`,
               width: '500px',
               animation: 'popIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards',
+              zIndex: 10005,
+              backgroundColor: 'white', 
+              cursor: isDraggingChat ? 'grabbing' : 'grab'
             }}
+            onMouseDown={handleChatHeaderMouseDown}
           >
             {/* Header - Draggable */}
-            <div 
-              className="bg-black text-white p-4 flex justify-between items-center uppercase tracking-wide font-bold cursor-move"
-              onMouseDown={handleChatHeaderMouseDown}
-              style={{ cursor: isDraggingChat ? 'grabbing' : 'grab' }}
+            <div className="bg-black text-white p-4 flex justify-between items-center uppercase tracking-wide font-bold" 
+              style={{ cursor: 'grab' }}
             >
             </div>
-            
-            {/* Messages - Only showing the current exchange */}
-            <div className="flex-1 p-4 pb-8 overflow-y-auto space-y-4 flex flex-col ">
-              {/* Julius's message */}
+            <div className="flex-1 p-4 pb-8 overflow-y-auto space-y-4 flex flex-col bg-white" 
+              onMouseDown={(e) => {
+                // Only stop the event in input area when actually interacting with text
+                if (e.target instanceof HTMLInputElement || 
+                    (e.target as HTMLElement).closest('form') !== null) {
+                  e.stopPropagation();
+                }
+              }}>
               <div className="flex justify-start gap-2">
                 <div className="flex flex-col max-w-[80%]">
-                  <div className="border border-black px-4 py-3">
+                  <div className="border border-black px-4 py-3 bg-white">
                     {isTyping ? (
                       <div className="flex space-x-1">
                         <span className="h-2 w-2 bg-black rounded-full animate-bounce delay-100"></span>
@@ -339,14 +359,17 @@ export default function GooeyFloatingChatButton() {
             </div>
             
             {/* Input */}
-            <div className="border-t border-black p-4 bg-white">
+            <div className="border-t border-black p-4 bg-white" 
+              onMouseDown={(e) => {
+                e.stopPropagation();
+              }}>
               <form onSubmit={handleSubmit} className="flex space-x-2">
                 <input
                   ref={inputRef}
                   type="text"
                   value={input}
                   onChange={handleInputChange}
-                  className="flex-1 border border-black rounded-none px-4 py-2 focus:outline-none focus:ring-1 focus:ring-black"
+                  className="flex-1 border border-black rounded-none px-4 py-2 focus:outline-none focus:ring-1 focus:ring-black bg-white"
                   placeholder="Type a message..."
                   aria-label="Type your message"
                 />
@@ -370,7 +393,6 @@ export default function GooeyFloatingChatButton() {
         )}
       </div>
 
-      {/* CSS for animations */}
       <style jsx>{`
         @keyframes popIn {
           0% {

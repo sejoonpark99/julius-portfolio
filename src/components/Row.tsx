@@ -3,9 +3,7 @@ import { RowProps, ImageData, RowDOMElements } from '../types/types';
 import ImageDialog from './ImageDialog';
 import { PreviewItemInstance } from './PreviewItem';
 
-// Re-add the RowInstance class and export it
 export class RowInstance {
-  // DOM elements
   DOM: RowDOMElements = {
     el: null,
     title: null,
@@ -36,7 +34,6 @@ const Row: React.FC<RowProps> = ({ title, images, index }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleImageClick = (e: React.MouseEvent, image: ImageData) => {
-    // Stop event propagation to prevent the row click handler from firing
     e.stopPropagation();
     setSelectedImage(image);
     setIsDialogOpen(true);

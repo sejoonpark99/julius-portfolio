@@ -13,14 +13,6 @@ SKILLS:
 - Testing: Jest, Cypress
 - Other: RESTful APIs, GraphQL, Docker, Kubernetes
 
-EXPERIENCE:
-- Software Engineer at [Current Company], [Start Date] - Present
-  * Developed and maintained web applications using React and Node.js
-  * Implemented CI/CD pipelines for automated testing and deployment
-  * Collaborated with cross-functional teams to deliver high-quality products
-  * Optimized application performance and improved user experience
-- 
-
 PROJECTS:
 - Personal Portfolio Website: Built with Next.js and TypeScript, featuring responsive design and dynamic content
 

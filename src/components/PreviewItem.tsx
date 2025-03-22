@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { PreviewItemProps, ImageData, PreviewItemDOMElements } from '../types/types';
 import ImageDialog from './ImageDialog';
 
-// Keep the PreviewItemInstance class for backward compatibility
 export class PreviewItemInstance {
-  // DOM elements
   DOM: PreviewItemDOMElements = {
     el: null,
     title: null,
@@ -29,7 +27,6 @@ export const PreviewItem: React.FC<PreviewItemProps> = ({ title, images }) => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const handleImageClick = (e: React.MouseEvent, image: ImageData) => {
-    // Stop event propagation
     e.stopPropagation();
     
     // Set the selected image and open the dialog
