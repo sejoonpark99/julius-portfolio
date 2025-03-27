@@ -30,6 +30,7 @@ export interface ImageData {
       title?: string;
       duration?: string;
       description?: string;
+      videoUrl?: string;
       overview?: string;
       technicalDetails?: string;
       challenges?: string;

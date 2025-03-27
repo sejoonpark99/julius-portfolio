@@ -228,6 +228,29 @@ const ImageDialog: React.FC<ImageDialogProps> = ({ isOpen, onClose, image }) => 
                   <p>{image.details.overview}</p>
                 </div>
               )}
+
+              {/* Video Demo Section */}
+              {image.details?.videoUrl && (
+                <div className="image-dialog-section">
+                  <h3>Video Demo</h3>
+                  <div className="image-dialog-video" style={{ position: 'relative', paddingTop: '40%' }}>
+                    <video 
+                      controls
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain'
+                      }}
+                      className="project-video"
+                    >
+                      <source src={image.details.videoUrl} type="video/mp4" />
+                    </video>
+                  </div>
+                </div>
+              )}
               
               {/* Technical Details Section - only show if technical details exist */}
               {image.details?.technicalDetails && (

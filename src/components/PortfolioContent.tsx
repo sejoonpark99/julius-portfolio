@@ -800,6 +800,7 @@ def close_position(app, position):
         details: {
           title: "Seam",
           description: "A comprehensive configuration for a mobile app that converts a receipt splitter web app into an iOS application using React Native, PostgreSQL, and a Python FastAPI backend.",
+          videoUrl: '/Seam_Demo_v2.mp4',
           overview: "Project Seam enables users to capture receipt images, process them using OCR, and split bills through both voice commands and manual item assignment. The application integrates a React Native frontend with robust components for image scanning, voice processing, and manual splitting, alongside a Python backend that handles OCR, voice transcription, and NLP-driven item assignment.",
           technicalDetails: `## Frontend Implementation & Components
       
